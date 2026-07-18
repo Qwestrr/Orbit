@@ -1,0 +1,53 @@
+name: Build iOS IPA
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'
+          channel: 'stable'
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build iOS
+        run: flutter build ios --release
+
+      - name: Build IPA
+        run: |
+          cd build/ios/ipa
+          xcodebuild -exportArchive \
+            -archivePath ../Release.xcarchive \
+            -exportPath ./ \
+            -exportOptionsPlist ../../../ios/ExportOptions.plist
+        continue-on-error: true
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ios-ipa
+          path: build/ios/ipa/*.ipa
+          retention-days: 30
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            iOS IPA build for ${{ github.ref }}
