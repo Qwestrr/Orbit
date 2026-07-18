@@ -4,17 +4,15 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:  # Allows manual trigger
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: macos-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v3
@@ -26,20 +24,12 @@ jobs:
         run: flutter pub get
 
       - name: Build iOS
-        run: flutter build ios --release
-
-      - name: Build IPA
-        run: |
-          cd build/ios/ipa
-          xcodebuild -exportArchive \
-            -archivePath ../Release.xcarchive \
-            -exportPath ./ \
-            -exportOptionsPlist ../../../ios/ExportOptions.plist
-        continue-on-error: true
+        run: flutter build ios --release --no-codesign
 
       - name: Upload IPA artifact
         uses: actions/upload-artifact@v4
         with:
           name: ios-ipa
-          path: build/ios/ipa/*.ipa
+          path: build/ios/ipa/
           retention-days: 30
+          if-no-files-found: warn
