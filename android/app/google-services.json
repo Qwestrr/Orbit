@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_id": "orbit-v2-265dd",
+    "project_number": "1060740195756",
+    "storage_bucket": "orbit-v2-265dd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060740195756:android:1ed218da3212fed46cc609",
+        "android_client_info": {
+          "package_name": "com.example.circle_map"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfql6PNMM7_k9wIy5JozHzB9pz6PPUyXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

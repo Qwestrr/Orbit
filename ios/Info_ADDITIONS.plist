@@ -1,0 +1,26 @@
+<!--
+  Merge these keys into ios/Runner/Info.plist, inside the outer <dict>.
+-->
+
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>Family Circle uses your location to show you on the map to your group and to record trip speed.</string>
+
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>Family Circle needs background location to keep sharing your location with your group and to detect trips automatically, even when the app isn't open.</string>
+
+<key>NSMotionUsageDescription</key>
+<string>Family Circle uses motion sensors during a trip to detect a possible crash and check in on you.</string>
+
+<key>io.flutter.embedded_views_preview</key>
+<true/>
+
+<key>UIBackgroundModes</key>
+<array>
+    <string>location</string>
+    <string>fetch</string>
+    <string>remote-notification</string>
+</array>
+
+<key>GMSApiKey</key>
+<string>AIzaSyC4HI8h7tYM5FCNjZpASdtciK4JhetMGxs</string>
+<!-- This key needs "Maps SDK for iOS" enabled too, or iOS builds will fail with it. -->

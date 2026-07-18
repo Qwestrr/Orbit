@@ -1,0 +1,6 @@
+This folder is intentionally empty in the template. The app's built-in
+place icons are drawn with Flutter's Icons (see kBuiltInPlaceIcons in
+lib/models/place.dart) so no bundled image assets are required to run.
+Drop your own default place-icon images here if you want bundled
+alternatives to the "import from photos" option, then reference them
+with AssetImage('assets/icons/places/your_icon.png').

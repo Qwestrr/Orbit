@@ -1,0 +1,5 @@
+This folder is intentionally empty in the template. Hazard/police pins
+currently use Flutter's built-in Icons (see hazard_report_dialog.dart
+and home_map_screen.dart) so no bundled image assets are required to
+run. Drop custom hazard-icon images here if you want to replace the
+built-in icons, then wire them into the marker BitmapDescriptor.

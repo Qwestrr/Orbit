@@ -1,0 +1,34 @@
+<!--
+  Merge these into android/app/src/main/AndroidManifest.xml, inside the
+  <manifest> tag (permissions) and <application> tag (meta-data), as noted.
+-->
+
+<!-- ===== Permissions: place directly under <manifest ...> ===== -->
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+<uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS"/>
+<uses-permission android:name="android.permission.WAKE_LOCK"/>
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+<!--
+  ===== Inside <application ...>, add your Google Maps API key: =====
+  Get a free key at https://console.cloud.google.com/google/maps-apis
+  (Maps SDK for Android). Free tier covers generous usage for a
+  family/friends-scale app; see README for current limits.
+-->
+<meta-data
+    android:name="com.google.android.geo.API_KEY"
+  android:value="AIzaSyCfql6PNMM7_k9wIy5JozHzB9pz6PPUyXw"/>
+
+<!--
+  Note on ACCESS_BACKGROUND_LOCATION: Google Play requires a prominent
+  in-app disclosure and a declaration form before approving apps that use
+  this permission. The onboarding flow should clearly explain that
+  location is shared continuously with the user's group before requesting
+  it — see PERMISSIONS_UX_NOTES.md.
+-->
